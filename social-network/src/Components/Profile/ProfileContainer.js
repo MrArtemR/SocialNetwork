@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Profile from './Profile';
-import {getStatus} from "../../redux/profileReducer";
+import {getStatusTC} from "../../redux/profileReducer";
 
 class ProfileContainer extends React.Component {
     componentDidMount(){
@@ -17,7 +17,6 @@ class ProfileContainer extends React.Component {
     }
 
     render(){
-        debugger;
         return (
             <Profile status={this.props.status}/>
         );
@@ -29,7 +28,7 @@ let mapStateToProps =  (state) => ({
 });
 
 let mapDispatchToProps = {
-    getStatus : getStatus
+    getStatus : getStatusTC
 }
 
 export default compose(

@@ -1,5 +1,8 @@
+import { profileAPI } from "../API/socialNetworkAPI";
 
 const SET_STATUS = "social-network/profile/SET-STATUS";
+
+const MY_PROFILE_ID = "6911";
 
 let initialState = {
     status: ""
@@ -16,9 +19,9 @@ const profileRedicer  = (state = initialState, action) => {
 
 export const setStatusAC = (status) => ({type : SET_STATUS, status});
 
-export const getStatus = (status) => (dispatch) =>{
-    let status = "test";
-    dispatch(setStatusAC(status));
+export const getStatusTC = (userId) => async (dispatch) => {
+    let response = await profileAPI.getStatus(MY_PROFILE_ID);
+    dispatch(setStatusAC(response.data));
 }
 
 export default profileRedicer;

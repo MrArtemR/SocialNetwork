@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 import profileRedicer from './profileReducer';
 
 const reducers = combineReducers({
-    profile : profileRedicer
+    profilePage : profileRedicer
 });
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));

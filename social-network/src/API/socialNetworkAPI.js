@@ -19,3 +19,9 @@ export const profileAPI =  {
         return axs.put(`profile/status`,{status});
     }
 }
+
+export const usersAPI = {
+    getUsers(count, page){
+        return axs.get(`users?page=${page}&count=${count}`);
+    }
+}

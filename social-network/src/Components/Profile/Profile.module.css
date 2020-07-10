@@ -1,0 +1,9 @@
+.mainPhoto{
+    height: 200px;
+    width: 200px;
+    border-radius: 200px;
+}
+
+.description{
+    padding: 10px;
+}

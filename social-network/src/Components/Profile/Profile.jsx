@@ -1,16 +1,30 @@
 import React from 'react';
+import styles from './Profile.module.css';
+import userPhoto  from '../../images/user.png';
+import Preloader from '../Common/Preloader';
+
+
 
 const Profile = (props)  => {
-    debugger;
-    let fullName = null;
-    if(props.profile)
+    if(props.profile === null)
     {
-        fullName = props.profile.fullName;
+        return <Preloader/>
     }
+
     return (
-        <div>
-            {props.status}
-            {fullName}
+        <div className={styles.description}>
+            <div>
+              <img src={props.profile.photos.large || userPhoto} className={styles.mainPhoto}/>  
+            </div>
+            <div>
+                {props.profile.fullName || "---"}
+            </div>
+            <div>
+                {props.status || "---"}
+            </div>
+            <div>
+                {props.profile.aboutMe || "---"}
+            </div>  
         </div>
     );
 }

@@ -7,6 +7,7 @@ import Users from './Components/Users/Users';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import ProfileContainer from './Components/Profile/ProfileContainer';
+import UsersContainer from './Components/Users/UsersContainer';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
 
           <div className="app-wrapper-content">
             <Route path="/profile" render={()=> <ProfileContainer store={store}/>}/>
-            <Route path="/users" render={()=> <Users/>}/>
+            <Route path="/users" render={()=> <UsersContainer store={store}/>}/>
           </div>    
         </div>
       </Provider>

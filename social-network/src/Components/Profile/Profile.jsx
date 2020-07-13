@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Profile.module.css';
 import userPhoto  from '../../images/user.png';
 import Preloader from '../Common/Preloader';
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 
 
@@ -20,7 +21,7 @@ const Profile = (props)  => {
                 {props.profile.fullName || "---"}
             </div>
             <div>
-                {props.status || "---"}
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
             <div>
                 {props.profile.aboutMe || "---"}

@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Profile from './Profile';
-import {getStatusTC, getProfileTC } from "../../redux/profileReducer";
+import {getStatusTC, getProfileTC, updateStatusTC } from "../../redux/profileReducer";
 import Preloader from '../Common/Preloader';
 
 const ProfileContainer = (props) => {
@@ -18,7 +18,7 @@ const ProfileContainer = (props) => {
     }
 
     return (
-        <Profile status={props.status}  profile={props.profile}/>
+        <Profile {...props} status={props.status}  profile={props.profile}/>
     );
 } 
 
@@ -29,7 +29,8 @@ let mapStateToProps =  (state) => ({
 
 let mapDispatchToProps = {
     getStatus : getStatusTC,
-    getProfile : getProfileTC
+    getProfile : getProfileTC,
+    updateStatus : updateStatusTC
 }
 
 export default compose(

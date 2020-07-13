@@ -15,7 +15,7 @@ const profileRedicer  = (state = initialState, action) => {
         case SET_STATUS:
             return {...state, status : action.status};
         case SET_PROFILE:
-            return  {...state, profile : action.profile }
+            return  {...state, profile : action.profile };
         default:
             return state;
     }
@@ -34,6 +34,13 @@ export const getProfileTC = (userId) => async(dispatch) => {
     let response = await profileAPI.getProfile(MY_PROFILE_ID);
     dispatch(setProfileAC(response.data));
 }
+
+export const updateStatusTC = (status)  => async(dispatch) => {
+    let response = await profileAPI.setStatus(status);
+    if(response.date.resultCode === 0){
+        dispatch(setStatusAC(status));
+    }
+} 
 
 export default profileRedicer;
 

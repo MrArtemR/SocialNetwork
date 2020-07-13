@@ -1,29 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Profile from './Profile';
 import {getStatusTC, getProfileTC } from "../../redux/profileReducer";
+import Preloader from '../Common/Preloader';
 
-class ProfileContainer extends React.Component {
-    componentDidMount(){
-        this.props.getStatus();
-        this.props.getProfile();
+const ProfileContainer = (props) => {
+    useEffect(() => {
+        props.getStatus();
+        props.getProfile();
+    }, []);
+
+    if(!props.profile)
+    {
+        return <Preloader/>
     }
 
-    componentDidUpdate(prevProps, prevState){
-        if(this.props.match.params.status !== prevProps.match.params.status){
-            this.props.getStatus();
-            this.props.getProfile();
-        }
-    }
-
-    render(){
-        return (
-            <Profile status={this.props.status}  profile={this.props.profile}/>
-        );
-    }
-}
+    return (
+        <Profile status={props.status}  profile={props.profile}/>
+    );
+} 
 
 let mapStateToProps =  (state) => ({
     status : state.profilePage.status,

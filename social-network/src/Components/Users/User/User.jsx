@@ -1,9 +1,10 @@
 import React from "react";
 import UsersPhoto from "../../../images/user.png";
+import styles from "./User.module.css";
 
 let User = ({name, id, photos, status, followed}) => {
     return (
-        <div>
+        <div className={styles.userInformationBLock}>
             <div>
                 { name || "---"}
             </div>
@@ -14,7 +15,7 @@ let User = ({name, id, photos, status, followed}) => {
                 {followed ? "Follow" : "Unfollow"}
             </div>
             <div>
-                <img src={ photos.large || UsersPhoto }/>
+                <img className={styles.userPhoto} src={ photos.large || UsersPhoto }/>
             </div>
         </div>
     );

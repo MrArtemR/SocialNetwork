@@ -7,22 +7,21 @@ const { default: Preloader } = require("../Common/Preloader");
 const { default: Users } = require("./Users");
 const { getUesrsTC } = require("../../redux/usersReducer");
 
-class UsersContainer extends React.Component{
-    componentDidMount(){
-        this.props.getUsers();
+const UsersContainer = (props)  => {
+    useEffect(() => {
+        props.getUsers();
+    }, []);
+
+    if(!props.users.length)
+    {
+        return <Preloader/>
     }
 
-    render(){
-        if(!this.props.users.length)
-        {
-            return <Preloader/>
-        }
-        return(
-            <div>
-                <Users users={this.props.users}/>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <Users users={props.users}/>
+        </div>
+    );
 }
 
 let mapStateToProps = (state) => ({
